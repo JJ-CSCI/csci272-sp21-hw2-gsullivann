@@ -11,10 +11,35 @@ class Rot13 {
 
 public:
     Rot13(std::string msg = "");
+    bool isLatin(std::string text);
+    void printText();
+    std::string getPrintText();
+    void setPrintText(std::string msg);
     bool operator!();
     void operator>>(std::string&);
     friend void operator<<(std::string&, Rot13&);
 };
+
+ Rot13::Rot13(std::string msg) {
+   if(isLatin(msg)){
+     this->text = msg;
+   }
+   else{
+     msg = "";
+   } 
+ }
+ bool Rot13::operator!() {
+   if(this->text == ""){
+     return true;
+   }
+   else{
+     return false;
+   }
+ }
+void Rot13::setPrintText(std::string msg){
+  if(isLatin(msg))
+    this->text = msg;
+}
 
 
 //------------------------------
